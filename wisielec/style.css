@@ -1,0 +1,34 @@
+#litery {
+    text-align: center;  
+    margin-top: auto;
+}
+
+#bledy {
+    text-align: center;  
+    margin-top: auto;
+}
+
+#klawiatura {
+    text-align: center;
+}
+
+#title {
+    text-align: center;
+}
+
+.center {
+    height: 200px;
+}
+
+#wisielec {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#pass {
+    text-align: center;
+    font-size: 40px;
+
+    letter-spacing: 10px;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klawiatura ekranowa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="title" >Wisielec</h1>
+
+    <img src="wisielec.png" id="wisielec">
+    
+    <div id="litery" class="center"></div>
+    <div id="bledy" class="center"></div>
+    <div id="haslo"></div>
+    <div id="klawiatura" class="center"></div>
+   
+    <script>
+        var btn;
+        var char;
+        for (var i = 65; i <= 90; i++) {
+            char = String.fromCharCode(i)
+            
+            btn = document.createElement("button");
+           
+            btn.id = i;
+            btn.innerText = char;
+
+            btn.addEventListener("click", function() {
+                    var present = false;
+                    for (var i = 0; i < word.length; i++) {
+                        if (word[i] == String.fromCharCode(this.id)) {
+                            present = true;
+                            points++;
+                            guessed[i] = true;                  
+                        }
+                    }
+                    if (!present) {                            
+                            fails++;
+                        }
+
+                    this.disabled = true;
+                    updateTextbox(word);
+                    endGame(points, fails, word);
+            });
+
+            document.getElementById("klawiatura").appendChild(btn);
+
+            
+        }
+
+        var guessed = [];
+        var points = 0;
+        var fails = 0;
+               
+        function endGame(points, fails, word) {
+            if (fails >= 6) {
+                window.alert("Przegrales!");
+            } else if (points == word.length) {
+                window.alert("Wygrales");
+            }
+        }
+        function updateTextbox(word) {
+            var buffor = "";
+            for (var i = 0; i < word.length; i++) {
+                if (guessed[i]){
+                    buffor += word[i];
+                } else {
+                    buffor += "_";
+                }
+            }
+            
+            document.getElementById("litery").innerHTML = buffor;
+            
+            
+            document.getElementById("bledy").innerHTML = "Bledy: " + fails + "/6";
+                      
+        }
+
+        var word = window.prompt("Wprowadz slowo").toUpperCase();
+        var validLetters = 0;
+        for (var i = 65; i <= 90; i++) {
+            for (var x = 0; x <word.length; x++) {
+                if (String.fromCharCode(i) == word[x]) {
+                    validLetters++;
+                }
+            }
+        }
+                      
+        
+
+    </script>
+</body>
+</html>
